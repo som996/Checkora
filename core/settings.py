@@ -145,6 +145,12 @@ SECURE_SSL_REDIRECT = not DEBUG
 
 # Email Configuration for OTP and Password Reset EMails
 EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'django.core.mail.backends.console.EmailBackend')
+# Email Configuration for OTP
+EMAIL_BACKEND = (
+    'django.core.mail.backends.smtp.EmailBackend'
+    if not DEBUG
+    else 'django.core.mail.backends.console.EmailBackend'
+)
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True

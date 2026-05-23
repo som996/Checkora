@@ -2083,7 +2083,8 @@
 
                     const emoteChar = e.currentTarget.getAttribute('data-emote');
                     const emoteEl = document.createElement('div');
-                    emoteEl.className = 'floating-emote ' + (turn === 'white' ? 'white-emote' : 'black-emote');
+                    const emoteColor = turn;
+                    emoteEl.className = 'floating-emote ' + (emoteColor === 'white' ? 'white-emote' : 'black-emote');
                     emoteEl.textContent = emoteChar;
                     const boardOuter = document.querySelector('.board-outer');
                     if (boardOuter) {
@@ -2182,8 +2183,8 @@ if (leaveConfirmNo) leaveConfirmNo.addEventListener('click', () => {
             const statusText = document.getElementById('status-text');
             function setOfflineStatus() {
             if (!statusIndicator || !statusText) return;
-                statusIndicator.classList.remove("offline");
-                statusText.textContent = "offline";
+                statusIndicator.classList.add("offline"); //fixed
+                statusText.textContent = "Offline";
             }
             function setOnlineStatus() {
                 if (!statusIndicator || !statusText) return;
